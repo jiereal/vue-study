@@ -16,6 +16,9 @@ module.exports = {
   chainWebpack(config) {
     config.plugins.delete('eslint') // 移除eslint
   },
+  configureWebpack: {
+    devtool: 'source-map'
+  },
   css: {
     extract: false
   },

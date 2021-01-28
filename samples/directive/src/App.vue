@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <div class="stage" v-loading="loading"></div>
+    <p v-if="jiereal">test</p>
+    <p v-for="a of 3">
+      test
+    </p>
+    <p v-text="vText"></p>
   </div>
 </template>
 
@@ -13,7 +18,8 @@
     },
     data() {
       return {
-        loading: false
+        loading: false,
+        jiereal: false
       }
     }
   }
