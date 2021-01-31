@@ -51,24 +51,80 @@
    以上代码中，当我们尝试`this.obj.text = '测试'`的时候，我们不能在页面上看到`测试`的显示，在Vue尝试实例化组件的时候并不知道`obj`下面有什么属性, 所以我们应该通过`this.$set(obj, 'text', '测试')`来渲染页面
 
 5. 什么是自定义指令？我们什么情况下需要用到自定义指令？怎么写自定义指令
+   在Vue、React、Angularjs等框架中，指令的概念都是非常普遍的
+   Vue框架中我们已经非常熟悉的自带的指令包含: `v-bind`、`v-on`、`v-if`、`v-else-if`、`v-else`、`v-for`、`v-show`、`v-text`等14个指令，他们分别具有不同的意义，而自带的指令常常通过是vue-cli自带的babel编译器编译成不同的执行语句来实现的，这和自定义指令的结构完全不同
+
+   ```js
+   <div id="app">
+     <div class="stage" v-loading="loading"></div>
+     <p v-if="jiereal">test</p>
+     <p v-for="a of 3">
+       test
+     </p>
+   </div>
+   ```
+
+   以上的代码中`v-loading`属于自定义指令，通过vue-cli编译出的代码如下:
+
+   <img src="./images/samples/directives/v-loading.png" alt="实例代码" style="zoom: 33%;" />
+
+   在图中我们可以看到，我么自定义的指令`v-loading`被编译成:
+
+   ```js
+   _c("div", {
+     directives: [
+       {
+         name: "loading",
+         rawName: "v-loading",
+         value: _vm.loading,
+         expression: "loading"
+       }
+     ],
+     staticClass: "stage"
+   }),
+   ```
+
+   而vue自带的指令却被编译成了表达语句:
+
+   ```js
+   _vm.jiereal ? _c("p", [_vm._v("test")]) : _vm._e()
+   ```
+
+   
 
 6. 什么是过滤器？什么场景下我们才会用到过滤器？怎么编写过滤器？
+
 7. 什么是插件？什么场景下我们才会用到插件？怎么写插件？
+
 8. `Vue.mixin`是什么？我们能用它来做些什么？
+
 9. 了解`Vue.Observable`
+
 10. `vue-devtools`的安装与使用
+
 11. vue项目的调试技巧
+
 12. `__vue__`是什么
+
 13. `props`以及`propsData`的关联以及`propsData`的使用
+
 14. 十一个生命周期的意义
+
 15. `provide`、`inject`谈谈vue组件的沟通方式
     `vuex`
     `event-bus`
+
 16. `$parent`
+
 17. `model`属性的意义以及使用
+
 18. `$slots`和`$scopedSlots`的区别以及使用
+
 19. `$refs`的使用
+
 20. `<component v-bind:is="currentView"></component>` is指令的学习
+
 21. `transition`组件的应用
+
 22. `keep-alive`又是个什么鬼？
 
